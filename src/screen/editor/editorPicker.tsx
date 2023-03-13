@@ -1,17 +1,22 @@
 import React from "react";
 import { ComponentButton } from "../../component";
+import { componentData } from "./constant";
 
-export const EditorPicker = (props) => {
+export const EditorPicker = ({ setSidebar, isSidebar }) => {
   return (
     <div className="editor-picker">
       {/* <input /> */}
-      <ComponentButton
-        className="mb-2"
-        title="Text Input"
-        description="Supports Markdown or HTML."
-      />
-      <ComponentButton className="mb-2" />
-      <ComponentButton className="mb-2" />
+      <button onClick={() => setSidebar()} className="bg-red-700">
+        Hello
+      </button>
+      {isSidebar &&
+        componentData.map((i, k) => (
+          <ComponentButton
+            className="mb-2"
+            title={i.title}
+            description={i.description}
+          />
+        ))}
     </div>
   );
 };
