@@ -8,6 +8,9 @@ module.exports = {
       },
       colors: {
         background: "#e9eff2",
+        sidebar: "#F9FBFC",
+        title: "#1A1A1A",
+        dim: "#9196A6",
       },
     },
   },

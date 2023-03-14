@@ -8,3 +8,6 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-box-shadow: inherit !important;
 }
+input:focus-visible {
+  outline: transparent auto 1px;
+}

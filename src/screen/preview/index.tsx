@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { DragBox } from "../../component";
 import { getWithExpiry } from "../../utils/storeData";
+interface BoxesProps {
+  x?: number;
+  y?: number;
+  data?: any;
+}
 
 export const Preview = (props) => {
-  const [boxes, setBoxes] = useState([
-    {
-      id: new Date().toString(),
-      x: 50,
-      y: 50,
-      data: "button",
-    },
-  ]);
+  const [boxes, setBoxes] = useState<BoxesProps[] | any>([]);
   const [extra, setExtra] = useState(0);
 
   useEffect(() => {
@@ -20,16 +18,11 @@ export const Preview = (props) => {
       console.log("savedPosition", savedPosition);
       if (savedPosition) {
         setBoxes(savedPosition);
-      } else {
-        setBoxes([
-          {
-            id: new Date().toDateString(),
-            x: 50,
-            y: 50,
-            data: "button",
-          },
-        ]);
+        setExtra(extra + 1);
       }
+    } else {
+      setBoxes([]);
+      setExtra(extra + 1);
     }
   }, []);
 

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentButton } from "../../component";
 import { useBoxContext } from "../../context";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+
 // import { getBoxComponents, setBoxComponents } from "../../reduxStore/boxSlices";
 // import { useAppDispatch, useAppSelector } from "../../reduxStore/hooks";
 import {
@@ -11,6 +13,7 @@ import {
 import { componentData } from "./constant";
 
 export const EditorPicker = () => {
+  const [searchText, setSearchText] = useState("");
   const boxCtx = useBoxContext();
   const addComponent = (component) => {
     let boxData = getWithExpiry("position");
@@ -44,17 +47,37 @@ export const EditorPicker = () => {
   };
 
   return (
-    <div className="w-3/12 px-4">
-      {/* <input /> */}
-      {componentData.map((i, k) => (
-        <ComponentButton
-          key={"com" + k}
-          className="mb-2"
-          title={i.title}
-          description={i.description}
-          addComponent={() => addComponent(i.component)}
+    <div className="w-3/12 px-4 bg-sidebar">
+      <div className="flex border border-dim/1 rounded-sm items-center mt-10 bg-white py-2 px-2">
+        <MagnifyingGlassIcon
+          className="h-5 w-5 mr-1"
+          aria-hidden="true"
+          fill="black"
         />
-      ))}
+        <input
+          className="bg-white text-sm text-title w-full"
+          placeholder="Search Component"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+      </div>
+      <label className="font-FigTree text-sm text-dim font-semibold text-right w-full flex mt-6 mb-3">
+        Components
+      </label>
+      {componentData.map((i, k) => {
+        if (!i.title.includes(searchText)) {
+          return null;
+        }
+        return (
+          <ComponentButton
+            key={"com" + k}
+            className="mb-2"
+            title={i.title}
+            description={i.description}
+            addComponent={() => addComponent(i.component)}
+          />
+        );
+      })}
       <button
         onClick={onDeleteComponentData}
         className="bg-red-600 text-white py-2 w-full rounded-md shadow-xl mt-2"
