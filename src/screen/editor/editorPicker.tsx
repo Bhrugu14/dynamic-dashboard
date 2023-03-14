@@ -1,14 +1,13 @@
 import React from "react";
 import { ComponentButton } from "../../component";
+import { useBoxContext } from "../../context";
 import { getBoxComponents, setBoxComponents } from "../../reduxStore/boxSlices";
 import { useAppDispatch, useAppSelector } from "../../reduxStore/hooks";
 import { getWithExpiry, setWithExpiry } from "../../utils/storeData";
 import { componentData } from "./constant";
 
 export const EditorPicker = () => {
-  // const dispatch = useAppDispatch();
-  // const state = useAppSelector(getBoxComponents);
-
+  const boxCtx = useBoxContext();
   const addComponent = (component) => {
     let boxData = getWithExpiry("position");
     if (Array.isArray(boxData)) {
@@ -21,6 +20,7 @@ export const EditorPicker = () => {
           data: component,
         },
       ]);
+      boxCtx?.setExtra(boxCtx.extra + 1);
     } else {
       setWithExpiry("position", [
         {
@@ -30,11 +30,12 @@ export const EditorPicker = () => {
           data: component,
         },
       ]);
+      boxCtx?.setExtra(boxCtx.extra + 1);
     }
   };
 
   return (
-    <div className="w-4/12 px-4">
+    <div className="w-3/12 px-4">
       {/* <input /> */}
       {componentData.map((i, k) => (
         <ComponentButton

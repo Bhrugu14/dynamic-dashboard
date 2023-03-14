@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Draggable from "react-draggable";
+import { Button } from "../button";
+import { InputText } from "../inputText";
+import { Dropdown } from "../dropdown";
+import { Table } from "../table";
 
 interface DragBoxProps {
   x: number;
   y: number;
-  onStop: (
+  onStop?: (
     e: any,
     {
       x,
@@ -17,24 +21,22 @@ interface DragBoxProps {
   ) => void;
   key?: any;
   component: any;
+  disabled?: boolean;
 }
 
 export function DragBox(props: DragBoxProps) {
   let boxComp =
-    props.component === "button" ? (
-      <button className="px-10 py-3 bg-yellow-600 text-gray-50 rounded-xl shadow-xl">
-        NAME
-      </button>
-    ) : props.component === "textInput" ? (
-      <div className="p-1 px-1 py-1 bg-blue-300 rounded-xl">
-        <input className="w-48 py-2 px-2 text-sm rounded-xl" />
-      </div>
-    ) : (
-      <div className="h-10 w-10 bg-red-500" />
-    );
+    props.component === "button"
+      ? Button()
+      : props.component === "textInput"
+      ? InputText()
+      : props.component === "dropdown"
+      ? Dropdown()
+      : Table();
   return (
     <Draggable
-      defaultPosition={{ x: 0, y: 0 }}
+      disabled={props.disabled || false}
+      // defaultPosition={{ x: 0, y: 0 }}
       bounds="parent"
       position={{ x: props.x, y: props.y }}
       onStop={props.onStop}

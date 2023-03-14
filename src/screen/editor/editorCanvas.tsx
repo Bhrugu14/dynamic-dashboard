@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { DragBox } from "../../component";
+import { useBoxContext } from "../../context";
 import { getWithExpiry, setWithExpiry } from "../../utils/storeData";
 
 export const EditorCanvas = (props) => {
+  const boxCtx = useBoxContext();
   const [boxes, setBoxes] = useState([
     {
       id: new Date().toString(),
@@ -31,14 +33,14 @@ export const EditorCanvas = (props) => {
         ]);
       }
     }
-  }, [getWithExpiry("position")]);
+  }, [boxCtx?.extra]);
 
   return (
-    <div className="relative h-full w-8/12 float-left">
+    <div className="relative h-full w-full float-left">
       <div className="h-full w-full bg-background">
         {boxes.map((box, k) => (
           <DragBox
-            key={box.id}
+            key={"preview" + box.id + k}
             x={box.x}
             y={box.y}
             onStop={(e, { x, y }) => {
