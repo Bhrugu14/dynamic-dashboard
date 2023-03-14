@@ -10,7 +10,7 @@ const MainContainer = () => {
         <header className="App-header">Zenskar Demo</header>
         <Outlet />
       </div>
-      <div
+      {/* <div
         className={`transition-all duration-300 min-w-[70px] flex ${
           isSidebar ? "md:min-w-[250px] md:w-[30vw] w-[100vw]" : "w-[5vw]"
         } bg-red-500`}
@@ -22,7 +22,7 @@ const MainContainer = () => {
           }}
           isSidebar={isSidebar}
         />
-      </div>
+      </div> */}
     </div>
   );
 };

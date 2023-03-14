@@ -2,21 +2,18 @@ import React from "react";
 import { ComponentButton } from "../../component";
 import { componentData } from "./constant";
 
-export const EditorPicker = ({ setSidebar, isSidebar }) => {
+export const EditorPicker = () => {
   return (
-    <div className="editor-picker">
+    <div className="w-4/12 px-4">
       {/* <input /> */}
-      <button onClick={() => setSidebar()} className="bg-red-700">
-        Hello
-      </button>
-      {isSidebar &&
-        componentData.map((i, k) => (
-          <ComponentButton
-            className="mb-2"
-            title={i.title}
-            description={i.description}
-          />
-        ))}
+      {componentData.map((i, k) => (
+        <ComponentButton
+          key={"com" + k}
+          className="mb-2"
+          title={i.title}
+          description={i.description}
+        />
+      ))}
     </div>
   );
 };

@@ -5,13 +5,13 @@
 }
 
 .editor-canvas {
-  width: 100%;
+  /* width: 100%; */
   background-color: #e9eff2;
 }
 
 .editor-picker {
   padding: 25px;
-  width: 100%;
-  /* width: 250px; */
+  /* width: 100%; */
+  width: 250px;
   /* border-left: 1px solid black; */
 }

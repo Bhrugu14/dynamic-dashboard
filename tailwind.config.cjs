@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         FigTree: ["Figtree", "sans-serif"],
       },
+      colors: {
+        background: "#e9eff2",
+      },
     },
   },
   plugins: [],

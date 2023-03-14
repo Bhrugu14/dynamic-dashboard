@@ -7,7 +7,7 @@ export const Editor = (props) => {
   return (
     <div className="editor">
       <EditorCanvas />
-      {/* <EditorPicker /> */}
+      <EditorPicker />
     </div>
   );
 };
