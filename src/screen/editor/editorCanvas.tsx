@@ -1,13 +1,8 @@
-// import { loadPlugin } from "immer/dist/internal";
 import React, { useEffect, useState } from "react";
-// import Draggable from "react-draggable";
 import { DragBox } from "../../component";
-import { getBoxComponents, setBoxComponents } from "../../reduxStore/boxSlices";
-import { useAppDispatch, useAppSelector } from "../../reduxStore/hooks";
+import { getWithExpiry, setWithExpiry } from "../../utils/storeData";
 
 export const EditorCanvas = (props) => {
-  const state = useAppSelector(getBoxComponents);
-  const dispatch = useAppDispatch();
   const [boxes, setBoxes] = useState([
     {
       id: new Date().toString(),
@@ -19,15 +14,10 @@ export const EditorCanvas = (props) => {
   const [extra, setExtra] = useState(0);
 
   useEffect(() => {
-    // dispatch(setBoxComponents(boxes));
-  }, [extra]);
-
-  useEffect(() => {
-    console.log("state", state);
-    if (state.boxes.length > 0) {
-      const savedPosition = state.boxes || null;
+    let boxesData = getWithExpiry("position");
+    if (Array.isArray(boxesData)) {
+      const savedPosition = boxesData || null;
       console.log("savedPosition", savedPosition);
-
       if (savedPosition) {
         setBoxes(savedPosition);
       } else {
@@ -41,7 +31,7 @@ export const EditorCanvas = (props) => {
         ]);
       }
     }
-  }, [state.boxes]);
+  }, [getWithExpiry("position")]);
 
   return (
     <div className="relative h-full w-8/12 float-left">
@@ -55,6 +45,7 @@ export const EditorCanvas = (props) => {
               boxes[k].x = x;
               boxes[k].y = y;
               setBoxes(boxes);
+              setWithExpiry("position", boxes);
               // dispatch(setBoxComponents(boxes));
               setExtra(extra + 1);
             }}

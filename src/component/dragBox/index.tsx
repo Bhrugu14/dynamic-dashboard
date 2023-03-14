@@ -22,9 +22,15 @@ interface DragBoxProps {
 export function DragBox(props: DragBoxProps) {
   let boxComp =
     props.component === "button" ? (
-      <button className="w-60 h-20 bg-black">NAME</button>
+      <button className="px-10 py-3 bg-yellow-600 text-gray-50 rounded-xl shadow-xl">
+        NAME
+      </button>
+    ) : props.component === "textInput" ? (
+      <div className="p-1 px-1 py-1 bg-blue-300 rounded-xl">
+        <input className="w-48 py-2 px-2 text-sm rounded-xl" />
+      </div>
     ) : (
-      <div />
+      <div className="h-10 w-10 bg-red-500" />
     );
   return (
     <Draggable
