@@ -19,6 +19,10 @@ export const EditorCanvas = (props) => {
   const [extra, setExtra] = useState(0);
 
   useEffect(() => {
+    // dispatch(setBoxComponents(boxes));
+  }, [extra]);
+
+  useEffect(() => {
     console.log("state", state);
     if (state.boxes.length > 0) {
       const savedPosition = state.boxes || null;
@@ -37,7 +41,7 @@ export const EditorCanvas = (props) => {
         ]);
       }
     }
-  }, []);
+  }, [state.boxes]);
 
   return (
     <div className="relative h-full w-8/12 float-left">
@@ -51,8 +55,7 @@ export const EditorCanvas = (props) => {
               boxes[k].x = x;
               boxes[k].y = y;
               setBoxes(boxes);
-              console.log("BOXES", boxes);
-              dispatch(setBoxComponents(boxes));
+              // dispatch(setBoxComponents(boxes));
               setExtra(extra + 1);
             }}
             component={box.data}

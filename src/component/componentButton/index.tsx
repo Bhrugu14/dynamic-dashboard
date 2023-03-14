@@ -4,17 +4,20 @@ interface ButtonProps {
   className?: string;
   description?: string;
   title?: string;
+  addComponent?: (e: any) => void;
 }
 
 export const ComponentButton = ({
   className = "",
   description = "",
   title = "",
+  addComponent,
 }: ButtonProps) => {
   return (
     <button
       key={title}
       className={`flex py-2 pb-3 pl-2 justify-center-center w-full border-b border-slate-400/8 ${className}`}
+      onClick={addComponent}
     >
       <div className="h-14 w-14 bg-white shadow-xl flex items-center justify-center cursor-pointer">
         AA
