@@ -16,16 +16,23 @@ interface DragBoxProps {
     }
   ) => void;
   key?: any;
+  component: any;
 }
 
 export function DragBox(props: DragBoxProps) {
+  let boxComp =
+    props.component === "button" ? (
+      <button className="w-60 h-20 bg-black">NAME</button>
+    ) : (
+      <div />
+    );
   return (
     <Draggable
       bounds="parent"
       position={{ x: props.x, y: props.y }}
       onStop={props.onStop}
     >
-      <div className="w-40 h-40 bg-blue-500 rounded-lg shadow-lg"></div>
+      {boxComp}
     </Draggable>
   );
 }
