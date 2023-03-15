@@ -1,7 +1,7 @@
 # Zenskar Design Dashboard
 
-node v19.6.0
-react v18.2.0
+- node v19.6.0
+- react v18.2.0
 
 ## Tech
 
