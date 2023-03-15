@@ -21,8 +21,8 @@ export const EditorPicker = () => {
         ...boxData,
         {
           id: new Date().toDateString(),
-          x: 50,
-          y: 50,
+          x: 0,
+          y: 10,
           data: component,
         },
       ]);
@@ -31,8 +31,8 @@ export const EditorPicker = () => {
       setWithExpiry("position", [
         {
           id: new Date().toDateString(),
-          x: 50,
-          y: 50,
+          x: 0,
+          y: 10,
           data: component,
         },
       ]);
