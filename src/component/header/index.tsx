@@ -13,7 +13,11 @@ export const Header = () => {
           {"Design Board"}
         </label>
       </div>
-      <div className="flex justify-end w-[20.4%] bg-sidebar py-2 pr-2">
+      <div
+        className={`flex justify-end w-[20.4%] ${
+          location.pathname === "/" ? "bg-sidebar" : "bg-white"
+        } py-2 pr-2`}
+      >
         <button
           onClick={() =>
             location.pathname === "/" ? navigate("/preview") : navigate(-1)
