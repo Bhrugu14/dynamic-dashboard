@@ -7,14 +7,14 @@ export const Header = () => {
   const location = useLocation();
   return (
     <header className="flex justify-between w-full items-center">
-      <div className="flex flex-1 bg-white py-2 px-3">
+      <div className="flex flex-1 bg-white py-2 px-3 w-[75%]">
         <Bars3Icon className="h-5 w-5" aria-hidden="true" />
         <label className="flex ml-2 font-FigTree font-semibold text-sm text-title">
           {"Design Board"}
         </label>
       </div>
       <div
-        className={`flex justify-end w-[20.4%] ${
+        className={`flex justify-end w-[25%] ${
           location.pathname === "/" ? "bg-sidebar" : "bg-white"
         } py-2 pr-2`}
       >

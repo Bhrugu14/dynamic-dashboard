@@ -5,6 +5,7 @@ interface ButtonProps {
   description?: string;
   title?: string;
   addComponent?: (e: any) => void;
+  icon?: any;
 }
 
 export const ComponentButton = ({
@@ -12,6 +13,7 @@ export const ComponentButton = ({
   description = "",
   title = "",
   addComponent,
+  icon,
 }: ButtonProps) => {
   return (
     <button
@@ -20,7 +22,7 @@ export const ComponentButton = ({
       onClick={addComponent}
     >
       <div className="h-14 w-14 bg-white shadow-xl flex items-center justify-center cursor-pointer">
-        AA
+        {icon}
       </div>
       <div className="py-2 pl-1 flex flex-col flex-1 items-start justify-center cursor-pointer">
         <label className="font-FigTree font-bold text-sm cursor-pointer">

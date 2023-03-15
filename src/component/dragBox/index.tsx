@@ -36,7 +36,6 @@ export function DragBox(props: DragBoxProps) {
   return (
     <Draggable
       disabled={props.disabled || false}
-      // defaultPosition={{ x: 0, y: 0 }}
       bounds="parent"
       position={{ x: props.x, y: props.y }}
       onStop={props.onStop}

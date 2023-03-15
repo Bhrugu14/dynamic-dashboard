@@ -46,7 +46,7 @@ export const EditorPicker = () => {
   };
 
   return (
-    <div className="w-3/12 px-4 bg-sidebar">
+    <div className="w-[25%] px-4 bg-sidebar">
       <div className="flex border border-dim/1 rounded-sm items-center mt-10 bg-white py-2 px-2">
         <MagnifyingGlassIcon
           className="h-5 w-5 mr-1"
@@ -74,6 +74,7 @@ export const EditorPicker = () => {
             title={i.title}
             description={i.description}
             addComponent={() => addComponent(i.component)}
+            icon={i.icon}
           />
         );
       })}

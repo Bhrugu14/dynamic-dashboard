@@ -31,7 +31,7 @@ export const EditorCanvas = (props) => {
   }, [boxCtx?.extra]);
 
   return (
-    <div className="relative h-full w-full float-left">
+    <div className="relative h-full w-[75%]">
       <div className="h-full w-full bg-background">
         {boxes.length > 0 &&
           boxes.map((box, k) => (
