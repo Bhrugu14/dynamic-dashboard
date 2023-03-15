@@ -15,7 +15,7 @@ export function Dropdown() {
     <div
       className={`relative inline-block w-64 p-2 ${
         location.pathname === "/" && "bg-red-300"
-      }`}
+      } ${location.pathname === "/" ? "cursor-move" : "cursor-default"}`}
     >
       <select
         // disabled

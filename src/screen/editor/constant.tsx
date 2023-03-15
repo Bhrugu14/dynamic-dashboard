@@ -3,7 +3,7 @@ import { ChevronDownIcon, TableCellsIcon } from "@heroicons/react/24/solid";
 
 const Action = () => {
   return (
-    <label className="bg-indigo-700 text-white text-[6px] font-semibold px-1 rounded-sm">
+    <label className="bg-indigo-700 text-white text-[6px] font-semibold px-1 py-1 rounded-sm">
       ACTION
     </label>
   );

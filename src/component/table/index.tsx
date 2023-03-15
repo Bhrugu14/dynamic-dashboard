@@ -1,11 +1,21 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 import { data } from "./constant";
 
 export function Table() {
+  const location = useLocation();
   return (
-    <button className="cursor-default">
-      <table className="w-52 whitespace-nowrap max-w-sm overflow-x-auto bg-white">
+    <button
+      className={`${
+        location.pathname === "/" ? "cursor-move" : "cursor-pointer"
+      }`}
+    >
+      <table
+        className={`w-52 whitespace-nowrap max-w-sm overflow-x-auto bg-white ${
+          location.pathname === "/" ? "cursor-move" : "cursor-default"
+        }`}
+      >
         <thead>
           <tr className="font-bold text-left">
             <th className="px-3 py-3">Name</th>
