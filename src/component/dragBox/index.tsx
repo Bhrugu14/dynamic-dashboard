@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
 import Draggable from "react-draggable";
+
 import { Button } from "../button";
 import { InputText } from "../inputText";
 import { Dropdown } from "../dropdown";

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { DragBox } from "../../component";
 import { getWithExpiry } from "../../utils/storeData";
 interface BoxesProps {

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { data } from "./constant";
+
 export function Table() {
   return (
     <button className="cursor-default">
@@ -12,27 +14,13 @@ export function Table() {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          <tr>
-            <td className="px-3 py-2 whitespace-nowrap">John Smith</td>
-            <td className="px-3 py-2 whitespace-nowrap">
-              john.smith@example.com
-            </td>
-            <td className="px-3 py-2 whitespace-nowrap">(123) 456-7890</td>
-          </tr>
-          <tr>
-            <td className="px-3 py-2 whitespace-nowrap">Jane Doe</td>
-            <td className="px-3 py-2 whitespace-nowrap">
-              jane.doe@example.com
-            </td>
-            <td className="px-3 py-2 whitespace-nowrap">(555) 123-4567</td>
-          </tr>
-          <tr>
-            <td className="px-3 py-2 whitespace-nowrap">Bob Johnson</td>
-            <td className="px-3 py-2 whitespace-nowrap">
-              bob.johnson@example.com
-            </td>
-            <td className="px-3 py-2 whitespace-nowrap">(999) 555-1212</td>
-          </tr>
+          {data.map((i, k) => (
+            <tr key={"table" + k}>
+              <td className="px-3 py-2 whitespace-nowrap">{i.name}</td>
+              <td className="px-3 py-2 whitespace-nowrap">{i.email}</td>
+              <td className="px-3 py-2 whitespace-nowrap">{i.phone}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </button>

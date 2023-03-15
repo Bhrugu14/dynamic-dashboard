@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-import { ComponentButton } from "../../component";
-import { useBoxContext } from "../../context";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
-// import { getBoxComponents, setBoxComponents } from "../../reduxStore/boxSlices";
-// import { useAppDispatch, useAppSelector } from "../../reduxStore/hooks";
+import { ComponentButton } from "../../component";
+import { useBoxContext } from "../../context";
+import { componentData } from "./constant";
 import {
   deleteStorage,
   getWithExpiry,
   setWithExpiry,
 } from "../../utils/storeData";
-import { componentData } from "./constant";
 
 export const EditorPicker = () => {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState<string>("");
   const boxCtx = useBoxContext();
-  const addComponent = (component) => {
+
+  const addComponent = (component: string) => {
     let boxData = getWithExpiry("position");
     if (Array.isArray(boxData)) {
       setWithExpiry("position", [
@@ -82,7 +81,7 @@ export const EditorPicker = () => {
         onClick={onDeleteComponentData}
         className="bg-red-600 text-white py-2 w-full rounded-md shadow-xl mt-2"
       >
-        Clear All
+        Clear Canvas
       </button>
     </div>
   );
