@@ -13,7 +13,7 @@ export function Dropdown() {
 
   return (
     <div
-      className={`relative inline-block w-64 p-2 ${
+      className={`drag-handle relative inline-block w-full h-full pt-5 pb-5 ${
         location.pathname === "/" && "bg-red-300"
       } ${location.pathname === "/" ? "cursor-move" : "cursor-default"}`}
     >
@@ -21,9 +21,11 @@ export function Dropdown() {
         // disabled
         value={selectedOption}
         onChange={handleChange}
-        className="max-w-xs appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+        className="appearance-none w-full h-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
       >
-        <option value="">Select an option</option>
+        <option value="" className="text-[2%]">
+          Select an option
+        </option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

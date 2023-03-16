@@ -7,12 +7,12 @@ export function Table() {
   const location = useLocation();
   return (
     <button
-      className={`${
+      className={`w-full h-full drag-handle ${
         location.pathname === "/" ? "cursor-move" : "cursor-pointer"
       }`}
     >
       <table
-        className={`w-52 whitespace-nowrap max-w-sm overflow-x-auto bg-white ${
+        className={`whitespace-nowrap w-full h-full overflow-x-auto bg-white ${
           location.pathname === "/" ? "cursor-move" : "cursor-default"
         }`}
       >

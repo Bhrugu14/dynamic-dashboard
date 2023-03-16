@@ -10,6 +10,14 @@ import {
   setWithExpiry,
 } from "../../utils/storeData";
 
+const defaultItem = {
+  id: new Date().getTime().toString(),
+  x: 0,
+  y: 0,
+  h: 2,
+  w: 2,
+};
+
 export const EditorPicker = () => {
   const [searchText, setSearchText] = useState<string>("");
   const boxCtx = useBoxContext();
@@ -17,24 +25,15 @@ export const EditorPicker = () => {
   const addComponent = (component: string) => {
     let boxData = getWithExpiry("position");
     if (Array.isArray(boxData)) {
+      let data = boxData.filter((i) => i.i.includes(component));
       setWithExpiry("position", [
         ...boxData,
-        {
-          id: new Date().toDateString(),
-          x: 0,
-          y: 10,
-          data: component,
-        },
+        { ...defaultItem, data: component, i: component + "" + data.length },
       ]);
       boxCtx?.setExtra(boxCtx.extra + 1);
     } else {
       setWithExpiry("position", [
-        {
-          id: new Date().toDateString(),
-          x: 0,
-          y: 10,
-          data: component,
-        },
+        { ...defaultItem, data: component, i: component },
       ]);
       boxCtx?.setExtra(boxCtx.extra + 1);
     }

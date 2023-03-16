@@ -6,7 +6,7 @@ export const InputText = () => {
 
   return (
     <input
-      className={`w-60 py-2 px-2 text-sm rounded-xl ${
+      className={`drag-handle w-full h-full rounded-xl bg-slate-50 ${
         location.pathname === "/" ? "cursor-move" : "cursor-pointer"
       }`}
     />

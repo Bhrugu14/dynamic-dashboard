@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import { DragBox } from "../../component";
 import { getWithExpiry } from "../../utils/storeData";
+
+import { Responsive, WidthProvider } from "react-grid-layout";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+
+const ResponsiveGridLayout = WidthProvider(Responsive);
 interface BoxesProps {
   x?: number;
   y?: number;
@@ -29,16 +35,25 @@ export const Preview = (props) => {
 
   return (
     <div className="relative h-full w-screen">
-      <div className="h-full w-full bg-background">
-        {boxes.map((box, k) => (
-          <DragBox
-            disabled
-            key={"preview" + box.id + k}
-            x={box.x}
-            y={box.y}
-            component={box.data}
-          />
-        ))}
+      <div className="h-full w-full bg-white">
+        <ResponsiveGridLayout
+          className="absolute w-full h-full"
+          layouts={{ lg: boxes }}
+          // breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+          cols={{ lg: 12, md: 12, sm: 12, xs: 12, xxs: 12 }}
+          rowHeight={30}
+          width={1200}
+          isDraggable={false}
+          isResizable={false}
+          // onLayoutChange={() => {}}
+          verticalCompact={false}
+        >
+          {boxes.map((item, k) => (
+            <div key={item.i}>
+              <DragBox component={item.i} />
+            </div>
+          ))}
+        </ResponsiveGridLayout>
       </div>
     </div>
   );
