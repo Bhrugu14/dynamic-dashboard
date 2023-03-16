@@ -40,16 +40,24 @@ export const EditorCanvas = () => {
   }, [boxCtx?.extra]);
 
   return (
-    <div className={`relative h-full w-[75%] overflow-auto`}>
+    <div className={`relative h-full w-[75%] overflow-auto flex`}>
       <div className={`w-[75%] h-full fixed bg-background`}>
         {showGrid && (
-          <div className={`absolute flex w-full h-full bg-background p-[10px]`}>
+          <div
+            className={`absolute h-[94%] w-full flex bg-background p-[7.83px]`}
+          >
             {[...Array(12)].map((i, k) => {
               return (
-                <div className="flex w-1/12 h-1/12 flex-1 flex-col border-black/5">
-                  {[...Array(50)].map((i, k) => {
+                <div
+                  key={"arry" + k}
+                  className="flex flex-col flex-1 border-green-700"
+                >
+                  {[...Array(40)].map((i, j) => {
                     return (
-                      <div className="border-[0.5px] flex flex-1 border-black/5" />
+                      <div
+                        key={"arry" + k}
+                        className="border-[0.5px] flex flex-1 border-black/5"
+                      />
                     );
                   })}
                 </div>
@@ -72,17 +80,17 @@ export const EditorCanvas = () => {
           onResizeStart={() => setShowGrid(true)}
           onResizeStop={() => setShowGrid(false)}
           cols={{ lg: 12, md: 12, sm: 12, xs: 12, xxs: 12 }}
-          rowHeight={25}
+          rowHeight={32}
           width={1200}
           onLayoutChange={(newLayout: { x: number; y: number }[]) => {
             if (newLayout.length > 0) {
               let newData = [];
               newLayout.map((i: { x: number; y: number }) => {
-                if (i.x > 12) {
+                if (i.x >= 12) {
                   i.x = 12;
                 }
-                if (i.y > 16) {
-                  i.y = 16;
+                if (i.y >= 17) {
+                  i.y = 17;
                 }
                 newData.push(i);
                 return i;

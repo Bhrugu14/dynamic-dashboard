@@ -25,7 +25,9 @@ export const Header = () => {
           onChange={(e) => {
             setCurrentRatio(e.target.value);
           }}
-          className="appearance-none bg-white border mr-3 border-gray-400 hover:border-gray-500 px-4 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          className={`${
+            location.pathname !== "/" && "hidden"
+          } appearance-none bg-white border mr-3 border-gray-400 hover:border-gray-500 px-4 rounded shadow leading-tight focus:outline-none focus:shadow-outline`}
         >
           {[100, 75, 50].map((option) => (
             <option key={option} value={option}>

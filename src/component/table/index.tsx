@@ -12,7 +12,7 @@ export function Table() {
       }`}
     >
       <table
-        className={`whitespace-nowrap w-full h-full overflow-x-auto bg-white ${
+        className={`whitespace-nowrap w-full h-full overflow-x-auto bg-white border ${
           location.pathname === "/" ? "cursor-move" : "cursor-default"
         }`}
       >
