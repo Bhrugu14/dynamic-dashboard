@@ -39,13 +39,11 @@ export const Preview = (props) => {
         <ResponsiveGridLayout
           className="absolute w-full h-full"
           layouts={{ lg: boxes }}
-          // breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
           cols={{ lg: 12, md: 12, sm: 12, xs: 12, xxs: 12 }}
           rowHeight={30}
           width={1200}
           isDraggable={false}
           isResizable={false}
-          // onLayoutChange={() => {}}
           verticalCompact={false}
         >
           {boxes.map((item, k) => (

@@ -21,7 +21,7 @@ export const Header = () => {
         } py-2 pr-2`}
       >
         <select
-          value={currentRatio + "%"}
+          value={currentRatio}
           onChange={(e) => {
             setCurrentRatio(e.target.value);
           }}
