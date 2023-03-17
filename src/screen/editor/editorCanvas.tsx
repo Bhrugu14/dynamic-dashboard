@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { DragBox } from "../../component";
-import { useBoxContext, useRatioContext } from "../../context";
+import { useBoxContext, useCssContext, useRatioContext } from "../../context";
 import { getWithExpiry, setWithExpiry } from "../../utils/storeData";
 
 import { Responsive, WidthProvider } from "react-grid-layout";
@@ -20,6 +20,7 @@ interface BoxesProps {
 export const EditorCanvas = () => {
   const boxCtx = useBoxContext();
   const { currentRatio } = useRatioContext();
+  const cssCtx = useCssContext();
   const [boxes, setBoxes] = useState<BoxesProps[] | any>([]);
   const [showGrid, setShowGrid] = useState(false);
   const [extra, setExtra] = useState(0);
@@ -55,7 +56,7 @@ export const EditorCanvas = () => {
                   {[...Array(40)].map((i, j) => {
                     return (
                       <div
-                        key={"arry" + k}
+                        key={"array" + j}
                         className="border-[0.5px] flex flex-1 border-black/5"
                       />
                     );
@@ -75,6 +76,11 @@ export const EditorCanvas = () => {
         <ResponsiveGridLayout
           className={`absolute w-full h-full`}
           layouts={{ lg: boxes }}
+          isDroppable={true}
+          onDrop={(layout: any, layoutItem: any, _event: any) => {
+            console.log("ONDROP_IN_layout", layout);
+            setWithExpiry("position", layout);
+          }}
           onDragStart={() => setShowGrid(true)}
           onDragStop={() => setShowGrid(false)}
           onResizeStart={() => setShowGrid(true)}
@@ -97,12 +103,13 @@ export const EditorCanvas = () => {
               });
               setBoxes(newData);
               setWithExpiry("position", newData);
-              console.log("position", newData);
             }
           }}
           verticalCompact={false}
           horizontalCompact={false}
           isBounded={false}
+          isDraggable={cssCtx.isStyleView}
+          isResizable={cssCtx.isStyleView}
           draggableHandle=".drag-handle"
         >
           {boxes.map((item, k) => (

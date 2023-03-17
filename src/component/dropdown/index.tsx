@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useCssContext } from "../../context";
 
 import { options } from "./constant";
 
 export function Dropdown() {
   const location = useLocation();
+  const cssCtx = useCssContext();
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleChange = (event) => {
@@ -19,6 +21,11 @@ export function Dropdown() {
     >
       <select
         // disabled
+        onClick={(e) => {
+          let data = e.target.classList;
+          console.log("TARGET", data);
+          cssCtx?.setArray(data || []);
+        }}
         value={selectedOption}
         onChange={handleChange}
         className="appearance-none w-full h-full bg-white border border-gray-400 hover:border-gray-500 px-4 rounded shadow focus:outline-none focus:shadow-outline"

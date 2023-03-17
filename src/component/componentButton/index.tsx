@@ -6,6 +6,8 @@ interface ButtonProps {
   title?: string;
   addComponent?: (e: any) => void;
   icon?: any;
+  onDragEnd?: (e: any) => void;
+  component?: string;
 }
 
 export const ComponentButton = ({
@@ -14,9 +16,14 @@ export const ComponentButton = ({
   title = "",
   addComponent,
   icon,
+  onDragEnd,
+  component,
 }: ButtonProps) => {
   return (
     <button
+      id={component}
+      draggable
+      onDragEnd={onDragEnd}
       key={title}
       className={`flex py-2 pb-3 pl-2 justify-center-center w-full border-b border-slate-400/8 ${className}`}
       onClick={addComponent}

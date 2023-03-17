@@ -1,11 +1,11 @@
 import React from "react";
 import { Bars3Icon, PlayIcon } from "@heroicons/react/24/solid";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useRatioContext } from "../../context";
+// import { useRatioContext } from "../../context";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { currentRatio, setCurrentRatio } = useRatioContext();
+  // const { currentRatio, setCurrentRatio } = useRatioContext();
   const location = useLocation();
   return (
     <header className="flex justify-between w-full items-center bg-slate-50">
@@ -20,7 +20,7 @@ export const Header = () => {
           location.pathname === "/" ? "bg-sidebar" : "bg-slate-50"
         } py-2 pr-2`}
       >
-        <select
+        {/* <select
           value={currentRatio}
           onChange={(e) => {
             setCurrentRatio(e.target.value);
@@ -34,7 +34,7 @@ export const Header = () => {
               {option + "%"}
             </option>
           ))}
-        </select>
+        </select> */}
         <button
           onClick={() =>
             location.pathname === "/" ? navigate("/preview") : navigate(-1)

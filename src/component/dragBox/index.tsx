@@ -17,8 +17,10 @@ export function DragBox(props: DragBoxProps) {
       <InputText />
     ) : props.component.includes("dropdown") ? (
       <Dropdown />
-    ) : (
+    ) : props.component.includes("table") ? (
       <Table />
+    ) : (
+      <div className="w-full h-full bg-red-700/5">Drop</div>
     );
   return <BoxComp />;
 }
